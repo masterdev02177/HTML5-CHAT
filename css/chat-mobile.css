@@ -1,0 +1,187 @@
+@media only screen and (max-width: 1440px) {}
+
+@media only screen and (max-width: 1024px) {}
+
+@media only screen and (max-width: 991px) {}
+
+@media only screen and (max-width: 850px) {
+    div.tab-content {
+        height: calc(100% - 50px) !important;
+    }
+    #footer {
+        /* bottom:40px; */
+    }
+    #quitBtn {
+        width: 10px !important;
+        padding: 5px 25px;
+    }
+    #tabs {
+        padding-bottom: 0px;
+    }
+    .tab-content {
+        box-shadow: 0px 0px 0px 0px;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    #backgroundsContainer {
+        right:15px;
+    }
+    .nav-tabs.nav-tabs-clone {
+        display: flex;
+    }
+    ul.zg-ul-select li.active {
+        border: 0px solid #ddd;
+        border-radius: 3px;
+        box-shadow: 0 0 0px #aaa;
+        display: block;
+    }
+    .tab-pane {
+        bottom: 0px;
+    }
+    #header .btn-primary .glyphicon, #header .btn-success .glyphicon, #header .btn-primary .fa, #header .btn-success .fa, #header .btn-danger .glyphicon, #header .btn-danger .fa {
+        padding-left: 2px;
+    }
+    #loginGuestModal .form-group .radio-inline label {
+        border: 1px solid #525a70;
+        border-radius: 3px;
+    }
+    .emojionearea .emojionearea-picker.emojionearea-picker-position-top {
+        margin-top: -246px;
+        left: 0px;
+        right: 0px;
+    }
+    .dark-modal .modal-body {
+        padding: 10px;
+    }
+    .dark-modal .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+        font-size: 12px;
+    }
+    .table-bordered>tbody>tr>td {
+        padding: 1px;
+    }
+    #roomsModal .btn {
+        width: auto !important;
+        min-width: 80px;
+        line-height: 10px !important;
+        padding: 0px;
+        min-height: 29px !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #header .btn {
+        width: 45px !important;
+        overflow: hidden;
+        margin: 0px 3px !important;
+    }
+    #myAvatar {
+        padding: 0px 10px;
+    }
+    .group-btns {
+        margin-left: -10px;
+    }
+    #backgroundsContainer {
+        right:15px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #backgroundsContainer {
+        right:15px;
+    }
+    #header .btn {
+        width: 45px !important;
+        overflow: hidden;
+        margin: 0px 3px !important;
+    }
+    #chatContainer {
+        height: calc(100vh - 120px);
+    }
+    #myAvatar {
+        padding: 0px 10px;
+    }
+    .group-btns {
+        margin-left: -10px;
+    }
+    .message .userItem {
+        font-size: .9em;
+    }
+    div.message div.content:before {
+        display: none;
+    }
+    div.message div.content {
+        margin-top: 2px;
+        padding: 5px 10px;
+    }
+    .msg-box {
+        padding-bottom: 2px;
+        padding-top: 5px;
+        border-bottom: 1px solid #ebe8e8;
+    }
+    #header {
+        height: 57px;
+    }
+    #chatContainer {
+        padding-top: 2px;
+    }
+    .welcome {
+        padding: 4px;
+    }
+    .message .timeStamp {
+        padding: 0px;
+    }
+    .emojionearea.focused {
+        border: 1px solid #efefef;
+        box-shadow: none;
+    }
+    .message-info {
+        margin-top: 0px;
+    }
+    #footer {
+        height: 60px;
+        padding: 10px 10px;
+    }
+    #tabs {
+        height: calc(100% - 60px) !important;
+    }
+    .mobile-text-lobby {
+        display: none;
+    }
+    .message-info {
+        max-width: 85%;
+    }
+    .name-time {
+        justify-content: flex-start;
+    }
+    .name-time {
+        margin-top: 0px;
+    }
+    .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+        padding: 3px 5px;
+        margin-top: 5px;
+    }
+    .tab-pane {
+        bottom: 20px;
+    }
+    .tab-pane .msg-box:last-child {
+        border: 0px;
+    }
+    .message .userItem {
+        font-weight: 600;
+    }
+}
+
+@media (max-width: 510px) {
+    div.tab-content {
+        height: calc(100% - 20px) !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .header-online {
+        margin-right: -10px;
+    }
+}
+
+/*iphone6 fix*/

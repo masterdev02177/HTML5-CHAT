@@ -1,0 +1,3 @@
+#userList div[data-status='busy'] {
+    opacity: 0.5;
+}

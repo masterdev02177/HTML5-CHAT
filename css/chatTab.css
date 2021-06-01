@@ -1,0 +1,20 @@
+/*
+tab chat
+*/
+
+
+@media only screen and (max-width: 480px) {
+    #webcamsContainer {
+        max-height: 260px;
+        overflow-y: auto;
+    }
+    .webcamSwfContainer {
+        max-width: 160px;
+        max-height: 120px;
+    }
+
+    .tab-pane {
+        top: auto;
+        padding-bottom: 280px;
+    }
+}

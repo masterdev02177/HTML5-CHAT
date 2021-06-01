@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+html, body {
+    font-family: "Open Sans";
+}
+img {
+    max-width: 100%;
+}
+.container {
+    padding: 20px;
+}
+#ticketDetail  {
+    display: none;
+}
+
+.ticketDetail {
+    padding:10px;
+    margin: 10px;
+    border:1px solid #DDD;
+}
+.Unread, .Read {
+    background-color: #a94442;
+    padding:5px;
+    border-radius: 10px;
+    color:white;
+    font-size: 0.8em;
+}
+.Read {
+    background-color: #2b542c;
+}
+.messageDetail {
+    padding:5px;
+    font-size: 0.9em;
+}
+.question {
+    font-style: italic;
+    margin-left: 50px;
+}
+.answer {
+    font-size: 1.1em;
+}
+tr.ticketreopen {
+    text-decoration: line-through;
+}
+
+@media (max-width: 800px) {
+    html, body {
+        font-size: 0.8em;
+    }
+}
+

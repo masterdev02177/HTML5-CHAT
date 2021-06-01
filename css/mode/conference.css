@@ -1,0 +1,37 @@
+#usersContainer {
+    width: 320px;
+    display: block !important;
+    position: relative;
+    flex-shrink: 0;
+}
+#tabs .nav-tabs {
+    display: none;
+}
+div.dropdown.ham-dropdown-menu {
+    display: none;
+}
+
+div.performerTile {
+    width: 25%;
+    max-width: 200px;
+    display: inline-block;
+    padding: 20px;
+
+}
+div.performerTile img {
+    width: 100%;
+    height: auto;
+}
+
+.soundsEffects {
+    display: none!important;
+}
+#customExit, #purchseCreditsBtn, #askPrivateConferenceBtn, #displayActivityBtn {
+    padding: 1px 6px !important;
+}
+.hidden {
+    display: none!important;;
+}
+div.filtergender {
+    display: none;
+}
