@@ -34,6 +34,8 @@ $ip = Services::getMyIp();
 $roles = Role::getAll($webmasterid);
 $genders = Gender::getAll($webmasterid);
 $config = DB::getOne('chat_config', "WHERE webmasterid=$webmasterid");
+$banner = DB::getOne('chat_banner',"WHERE setstatus='set'");
+
 
 if ($country && (stripos($config->forbidCountries, $country) !== false)) {
     exit("403 : forbidden country");

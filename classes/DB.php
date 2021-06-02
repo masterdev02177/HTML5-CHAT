@@ -35,7 +35,7 @@ class DB {
 				implode(',',$array)
 		);
 		if ($debug) echo $sql;
-		$res = mysqli_query(DB::$con1,$sql) or die (mysqli_error());
+		$res = mysqli_query(DB::$con1,$sql) or die (mysqli_error(DB::$con1,$sql));
 		$ArrayResult = array();
 		while ($row = mysqli_fetch_assoc($res)) {
 			$ArrayResult[] = $row;

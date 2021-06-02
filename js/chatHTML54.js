@@ -1180,7 +1180,7 @@ var ChatHTML5 = function (room, config, traductions) {
                 user.username, user.id,
                 userStyle, user.username, user.id, user.username, user.ip, user.username, userReceiver.username,
                 extras.date, chatHTML5.getDateAgo(extras.date),
-                boldClasse, italicClasse, underlineClasse, extras.color, extras.font_size,
+                boldClasse, italicClasse, underlineClasse, extras.color, font_size,
                 message);
         } else {
             if (user.username == chatHTML5.myUser.username && chatHTML5.config.senderMessageFloatRight == '1') {
@@ -1209,7 +1209,7 @@ var ChatHTML5 = function (room, config, traductions) {
                 user.image, user.username,
                 userStyle, user.username, user.id, user.username, user.ip, user.username, extraWhisper,
                 extras.date, chatHTML5.getDateAgo(extras.date),
-                boldClasse, italicClasse, underlineClasse, extras.color, extras.font_size,
+                boldClasse, italicClasse, underlineClasse, extras.color, font_size,
                 message);
         }
 
@@ -4201,7 +4201,7 @@ var ChatHTML5 = function (room, config, traductions) {
                 ', user.image, user.username,
                     chatHTML5.traductions.privateWith, user.username, user.id, user.username, user.username,
                     extras.date, chatHTML5.getDateAgo(extras.date),
-                    boldClasse, italicClasse, underlineClasse, extras.color, extras.font_size,
+                    boldClasse, italicClasse, underlineClasse, extras.color, font_size,
                     message);
 
                 $chat = chatHTML5.$getChat(user.id);

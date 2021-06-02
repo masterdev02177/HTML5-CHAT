@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../Config.php';
+include_once '../classes/DB.php';
 include_once 'protect.php';
 checkCanEnter('adminpanelUsers');
 
@@ -18,7 +19,7 @@ include 'lng/language.php';
 $lng = $lng->getData();
 $lngPage = $lng['users'];
 
-
+// $banner = DB::getOne('chat_banner', "WHERE image=$target_file");
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -40,7 +41,6 @@ $lngPage = $lng['users'];
     <script src="../js/bootbox.min.js" type="text/javascript"></script>
     <title><?php echo "BannerImages"; ?></title>
     <style type="text/css">
-
         .iw-contextMenu {
             box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.10) !important;
             border: 1px solid #c8c7cc !important;
@@ -173,8 +173,6 @@ $lngPage = $lng['users'];
             border-radius: 4px;
 
         }
-
-
     </style>
     <style type="text/css">
         @-webkit-keyframes load4 {
@@ -273,22 +271,19 @@ $lngPage = $lng['users'];
                 <div class="xcrud">
                     <div class="xcrud-container">
                         <div class="xcrud-ajax">
-                            <input type="hidden" class="xcrud-data" name="key" value="925d4986fcfc7173ba57d4c8f1719d449d1038f5"><input type="hidden" class="xcrud-data" name="orderby" value=""><input type="hidden" class="xcrud-data" name="order" value="asc"><input type="hidden" class="xcrud-data" name="start" value="0"><input type="hidden" class="xcrud-data" name="limit" value="10"><input type="hidden" class="xcrud-data" name="instance" value="3757fb5f335c2c0e103df1db28c392f215a1eaff"><input type="hidden" class="xcrud-data" name="task" value="list">
                             <div class="xcrud-top-actions">
-                                <div class="btn-group pull-right">
-                                </div>
                                 <form action="uploadBanner.php" method="post" id="image-form" enctype="multipart/form-data">
-                                
                                     <label id='fileupload' for="uploadImageFile"><i class="glyphicon glyphicon-plus-sign"></i> Add</label>
                                     <input type="file" name="uploadImageFile" id="uploadImageFile" style='display:none;'>
                                 </form>
-                                <div class="clearfix"></div>
                             </div>
                             <div class="xcrud-list-container">
                                 <table class="xcrud-list table table-striped table-hover table-bordered">
                                     <thead>
                                         <tr class="xcrud-th">
                                             <th class="xcrud-column">Image</th>
+                                            <th class="xcrud-column">setState</th>
+                                            <th class="xcrud-column">position</th>
                                             <th class="xcrud-actions">&nbsp;</th>
                                         </tr>
                                     </thead>
@@ -299,9 +294,16 @@ $lngPage = $lng['users'];
                                                 <td>
                                                     <img alt="" src="<?= '../' . $bannerImage['thumb'] ?>" style="max-height: 55px;">
                                                 </td>
+                                                <td>
+                                                    <p><?php ?></p>
+                                                </td>
+                                                <td></td>
                                                 <td class="xcrud-actions xcrud-fix">
                                                     <span class="btn-group">
-                                                        <button class="btn btn-danger btn-sm removeimage" title="Remove" data-src='<?= '../' . $bannerImage['image'] ?>' data-thumb-src='<?= '../' . $bannerImage['thumb'] ?>'>
+                                                        <button class="btn btn-warning btn-sm edit" title="Edit" data-src='<?= $bannerImage['image'] ?>' data-task="edit">
+                                                            <i class="glyphicon glyphicon-edit "></i>
+                                                        </button>
+                                                        <button class="btn btn-danger btn-sm removeimage" title="Remove" data-src='<?= $bannerImage['image'] ?>' data-thumb-src='<?= $bannerImage['thumb'] ?>'>
                                                             <i class="glyphicon glyphicon-remove"></i>
                                                         </button>
                                                     </span>
@@ -312,6 +314,35 @@ $lngPage = $lng['users'];
                                     <tfoot>
                                     </tfoot>
                                 </table>
+                            </div>
+                        </div>
+                        <div class='xcrud-ajax2' style="display: none;">
+                            <div class="xcrud-top-actions btn-group">
+                                <a id="save-return" data-task="save" data-after="list" class="btn btn-primary" data-primary="1">Save &amp; Go back</a>
+                                <a id="save" data-task="save" data-after="edit" class="btn btn-default" data-primary="1" data-src="">Save</a>
+                            </div>
+                            <div class='xcrud-view'>
+                                <div class='form-horizontal'>
+                                    <div class='form-group'>
+                                        <label class="control-label col-sm-3">Position</label>
+                                        <div class="col-sm-9">
+                                            <select class="xcrud-input form-control" data-type="select" name="Y2hhdF91c2Vycy5zdGF0dXM-" id="position" maxlength="0">
+                                                <option value="top" selected="">top</option>
+                                                <option value="right">right</option>
+                                                <option value="bottom">bottom</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>
+                                        <label class="control-label col-sm-3">setState</label>
+                                        <div class="col-sm-9">
+                                            <select class="xcrud-input form-control" data-type="select" name="Y2hhdF91c2Vycy5zdGF0dXM-" id="state" maxlength="0">
+                                                <option value="set" selected="">set</option>
+                                                <option value="unset">unset</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="xcrud-overlay" style="display: none;"></div>
@@ -458,7 +489,7 @@ $lngPage = $lng['users'];
                         var r = confirm("Are you sure you want to delete this Image?")
                         if (r == true) {
                             $.post(
-                                    './delete.php', {
+                                    './banner-delete.php', {
                                         'file': $(this).attr('data-src'),
                                         'file1': $(this).attr('data-thumb-src')
                                     })
@@ -470,10 +501,44 @@ $lngPage = $lng['users'];
                                 .error(function(err) {
                                     alert(err);
                                 })
-                                .always(function(){
-                                    alert("done");
-                                });
                         }
+                    })
+                    $('.edit').on('click', function(event) {
+                        // document.getElementById('save').attr('data-src') = $(this).attr('data-src');
+                        $('#save').attr('data-src', $(this).attr('data-src'));
+                        $('#save-return').attr('data-src', $(this).attr('data-src'));
+                        // var a=$('#save').attr('data-src')
+                        // alert(a);
+                        $('.xcrud-ajax').hide();
+                        $('.xcrud-ajax2').show();
+                    })
+                    $('#save').on('click', function(event) {
+                        $.post(
+                                './banner-save.php', {
+                                    'file': $(this).attr('data-src'),
+                                    'option1': $('#position').children("option:selected").val(),
+                                    'option2': $('#state').children("option:selected").val(),
+                                })
+                            .done(
+                                function(response) {
+                                    alert('success');
+                                }
+                            )
+                    })
+                    $('#save-return').on('click', function(event) {
+                        $.post(
+                                './banner-save.php', {
+                                    'file': $(this).attr('data-src'),
+                                    'option1': $('#position').children("option:selected").val(),
+                                    'option2': $('#state').children("option:selected").val(),
+                                })
+                            .done(
+                                function(response) {
+                                    alert('success');
+                                    $('.xcrud-ajax').show();
+                                    $('.xcrud-ajax2').hide();
+                                }
+                            )
                     })
                 </script>
             </div>

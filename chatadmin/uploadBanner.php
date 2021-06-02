@@ -1,13 +1,16 @@
 <?php
+include_once '../classes/DB.php';
 if (isset($_FILES["uploadImageFile"]) && $_FILES["uploadImageFile"] != null) {
     $target_dir = "../bannerImg/";
     $target_file = $target_dir . basename($_FILES["uploadImageFile"]["name"]);
     $target_file_thumb = $target_dir . "thumbs/" . basename($_FILES["uploadImageFile"]["name"]);
+    
+    $file_name = $_FILES["uploadImageFile"]["name"];
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     // var_dump($_FILES["uploadImageFile"]["tmp_name"]);
     // Check if image file is a actual image or fake image
-
+    $webmaster = Webmaster::get($webmasterid);
     $check = getimagesize($_FILES["uploadImageFile"]["tmp_name"]);
     if ($check !== false) {
         // echo "<script>alert('File is an image - " . $check["mime"] . ".');</script>";
@@ -42,6 +45,7 @@ if (isset($_FILES["uploadImageFile"]) && $_FILES["uploadImageFile"] != null) {
         if (move_uploaded_file($_FILES["uploadImageFile"]["tmp_name"], $target_file)) {
             echo "<script>alert('The file " . htmlspecialchars(basename($_FILES["uploadImageFile"]["name"])) . " has been uploaded.');</script>";
             copy($target_file, $target_file_thumb);
+            DB::insert('chat_banner',array('webmasterid'=>"$webmasterid",'image'=>"$file_name"),true);
         } else {
             echo "<script>alert('Sorry, there was an error uploading your file.');</script>";
         }

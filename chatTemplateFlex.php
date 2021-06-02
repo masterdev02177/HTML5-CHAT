@@ -122,7 +122,7 @@
                     <?php $classInvisible = ($roles[$myuser['role']]->invisibleMode) ? '' : 'displayNone' ?>
                     <div data-action="invisible" class="menuUserItem link-icons <?= $classInvisible ?>"><i class="fa fa-user-secret"></i> <?= $traductions['invisible']; ?></div>
 
-                        <div data-action="avatar" class="menuUserItem link-icons"><i class="fa fa-picture-o"></i> <?= $traductions['changeAvatar']; ?></div>
+                    <div data-action="avatar" class="menuUserItem link-icons"><i class="fa fa-picture-o"></i> <?= $traductions['changeAvatar']; ?></div>
 
 
 
@@ -143,7 +143,11 @@
                 <div class="status online header-online"></div>
                 <div class="myUsername"></div>
             </div>
-
+            <?php if ($banner->position == 'top') : ?>
+                <div class="flex-property" style="width:40%;text-align:center;">
+                    <img src='<?= './bannerImg/' . $banner->image ?>' style="width:100px;height:50px;margin:auto;margin-top:10px">
+                </div>
+            <?php endif ?>
             <div class="flex-property group-btns header-custom-btns">
                 <div class="header-btn-wrap hide-btn flex-property">
                     <button type="button" class="btn toggleSize"><i class="fa fa-caret-square-o-right"></i></button>
@@ -265,7 +269,7 @@
                             <button id="sendTipBtn"><?= $traductions['sendTips'] ?></button>
                         <?php endif ?>
 
-                        
+
 
                         <a href="javascript:void(0)" id="send-msg-btn"><?= $traductions['Send'] ?></a>
 
@@ -322,9 +326,14 @@
 
                 <?php $style = ($roles[$myuser['role']]->canSeeOtherUsers) ? '' : 'display:none' ?>
                 <div id="usersContainer" class="<?= $config->chatType ?>" style="<?= $style ?>">
-                            <audio id="webradioPlayer" controls="true" preload="none" controlsList="nodownload">
-                                <source src="<?= $config->webradio; ?>" type="audio/mp3">
-                            </audio>
+                    <?php if ($banner->position == 'right') : ?>
+                        <div style="text-align:center;margin-bottom:10px">
+                            <img src='<?= './bannerImg/' . $banner->image ?>' style="width: 150px;height:70px">
+                        </div>
+                    <?php endif ?>
+                    <audio id="webradioPlayer" controls="true" preload="none" controlsList="nodownload">
+                        <source src="<?= $config->webradio; ?>" type="audio/mp3">
+                    </audio>
                     <div id="slide_block" class="slide_block" data-userrole="<?= $myuser['role'] ?>"></div>
                     <?php if ($roles[$myuser['role']]->canSeeOtherUsers) : ?>
                         <ul class="nav nav-pills" style="display:flex;  flex-direction:row;  justify-content:space-evenly; margin-top:65px">
@@ -425,7 +434,11 @@
                                         <div id="youtubeQuiz"></div>
                                     </div>
                                 <?php endif ?>
-
+                                <?php if ($banner->position == 'bottom') : ?>
+                                    <div style="position: absolute;right: 20px;;bottom: 80px;">
+                                        <img src='<?= './bannerImg/' . $banner->image ?>' style="width: 270px;height:150px;">
+                                    </div>
+                                <?php endif ?>
                             </div>
                         </div>
 

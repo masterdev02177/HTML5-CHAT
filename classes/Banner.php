@@ -16,7 +16,7 @@ class Banner {
         foreach (glob($dir) as $image) {
 
             $image = basename($image);
-            $res[] = array('image'=>"bannerImg/$image", 'thumb'=>"bannerImg/thumbs/$image");
+            $res[] = array('image'=>"$image", 'thumb'=>"bannerImg/thumbs/$image");
         }
         return $res;
     }
