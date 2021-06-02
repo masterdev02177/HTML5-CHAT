@@ -295,9 +295,18 @@ $lngPage = $lng['users'];
                                                     <img alt="" src="<?= '../' . $bannerImage['thumb'] ?>" style="max-height: 55px;">
                                                 </td>
                                                 <td>
-                                                    <p><?php ?></p>
+                                                    <p>
+                                                        <?php $image=$bannerImage['image'];
+                                                        $banner = DB::getOne('chat_banner', "WHERE image='$image'");
+                                                        echo $banner->setstatus ?>
+                                                    </p>
                                                 </td>
-                                                <td></td>
+                                                <td>
+                                                    <p>
+                                                        <?php $banner = DB::getOne('chat_banner', "WHERE image='$image'");
+                                                        echo $banner->position ?>
+                                                    </p>
+                                                </td>
                                                 <td class="xcrud-actions xcrud-fix">
                                                     <span class="btn-group">
                                                         <button class="btn btn-warning btn-sm edit" title="Edit" data-src='<?= $bannerImage['image'] ?>' data-task="edit">
@@ -521,7 +530,7 @@ $lngPage = $lng['users'];
                                 })
                             .done(
                                 function(response) {
-                                    alert('success');
+                                    alert(response);
                                 }
                             )
                     })
@@ -534,7 +543,7 @@ $lngPage = $lng['users'];
                                 })
                             .done(
                                 function(response) {
-                                    alert('success');
+                                    alert(response); 
                                     $('.xcrud-ajax').show();
                                     $('.xcrud-ajax2').hide();
                                 }
