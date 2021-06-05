@@ -284,11 +284,13 @@ $lngPage = $lng['users'];
                                             <th class="xcrud-column">Image</th>
                                             <th class="xcrud-column">setState</th>
                                             <th class="xcrud-column">position</th>
+                                            <th class="xcrud-column">url</th>
                                             <th class="xcrud-actions">&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $bannerImages = Banner::getAll();
+                                        if($bannerImages){
                                         foreach ($bannerImages as $bannerImage) : ?>
                                             <tr class="xcrud-row xcrud-row-0">
                                                 <td>
@@ -307,6 +309,12 @@ $lngPage = $lng['users'];
                                                         echo $banner->position ?>
                                                     </p>
                                                 </td>
+                                                <td>
+                                                    <p>
+                                                        <?php $banner = DB::getOne('chat_banner', "WHERE image='$image'");
+                                                        echo $banner->url ?>
+                                                    </p>
+                                                </td>
                                                 <td class="xcrud-actions xcrud-fix">
                                                     <span class="btn-group">
                                                         <button class="btn btn-warning btn-sm edit" title="Edit" data-src='<?= $bannerImage['image'] ?>' data-task="edit">
@@ -319,6 +327,7 @@ $lngPage = $lng['users'];
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>
+                                        <?php }?>
                                     </tbody>
                                     <tfoot>
                                     </tfoot>
@@ -349,6 +358,12 @@ $lngPage = $lng['users'];
                                                 <option value="set" selected="">set</option>
                                                 <option value="unset">unset</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class='form-group'>
+                                        <label class="control-label col-sm-3">url</label>
+                                        <div class="col-sm-9">
+                                            <input class="xcrud-input form-control" type="url" id="url" style="width: 50%;">
                                         </div>
                                     </div>
                                 </div>
@@ -527,6 +542,7 @@ $lngPage = $lng['users'];
                                     'file': $(this).attr('data-src'),
                                     'option1': $('#position').children("option:selected").val(),
                                     'option2': $('#state').children("option:selected").val(),
+                                    'option3': $('#url').val(),
                                 })
                             .done(
                                 function(response) {
@@ -540,12 +556,14 @@ $lngPage = $lng['users'];
                                     'file': $(this).attr('data-src'),
                                     'option1': $('#position').children("option:selected").val(),
                                     'option2': $('#state').children("option:selected").val(),
+                                    'option3': $('#url').val(),
                                 })
                             .done(
                                 function(response) {
                                     alert(response); 
                                     $('.xcrud-ajax').show();
                                     $('.xcrud-ajax2').hide();
+                                    location.reload();
                                 }
                             )
                     })

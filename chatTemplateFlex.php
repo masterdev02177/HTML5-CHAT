@@ -145,7 +145,7 @@
             </div>
             <?php if ($banner->position == 'top') : ?>
                 <div class="flex-property" style="width:40%;text-align:center;">
-                    <img src='<?= './bannerImg/' . $banner->image ?>' style="width:100px;height:50px;margin:auto;margin-top:10px">
+                    <a href="<?=$banner->url ?>" style="margin:auto;"><img src='<?= './bannerImg/' . $banner->image ?>' style="width:100px;height:50px;margin-top:10px"></a>
                 </div>
             <?php endif ?>
             <div class="flex-property group-btns header-custom-btns">
@@ -328,7 +328,7 @@
                 <div id="usersContainer" class="<?= $config->chatType ?>" style="<?= $style ?>">
                     <?php if ($banner->position == 'right') : ?>
                         <div style="text-align:center;margin-bottom:10px">
-                            <img src='<?= './bannerImg/' . $banner->image ?>' style="width: 150px;height:70px">
+                            <a href="<?=$banner->url ?>"><img src='<?= './bannerImg/' . $banner->image ?>' style="width: 150px;height:70px"></a>
                         </div>
                     <?php endif ?>
                     <audio id="webradioPlayer" controls="true" preload="none" controlsList="nodownload">
@@ -436,7 +436,7 @@
                                 <?php endif ?>
                                 <?php if ($banner->position == 'bottom') : ?>
                                     <div style="position: absolute;right: 20px;;bottom: 80px;">
-                                        <img src='<?= './bannerImg/' . $banner->image ?>' style="width: 270px;height:150px;">
+                                        <a href="<?=$banner->url ?>"><img src='<?= './bannerImg/' . $banner->image ?>' style="width: 270px;height:150px;"></a>
                                     </div>
                                 <?php endif ?>
                             </div>

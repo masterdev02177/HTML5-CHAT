@@ -6,21 +6,24 @@
 
 
 
-class Banner {
+class Banner
+{
 
-    public static function getAll() {
-        $dir = __DIR__.'/../bannerImg/*.jpg';
+    public static function getAll()
+    {
+        $dir = __DIR__ . '/../bannerImg/*.jpg';
 
 
+        if (empty(glob($dir))) {
+            return;
+        } else {
 
-        foreach (glob($dir) as $image) {
+            foreach (glob($dir) as $image) {
 
-            $image = basename($image);
-            $res[] = array('image'=>"$image", 'thumb'=>"bannerImg/thumbs/$image");
+                $image = basename($image);
+                $res[] = array('image' => "$image", 'thumb' => "bannerImg/thumbs/$image");
+            }
+            return $res;
         }
-        return $res;
     }
-
-
-
 }
